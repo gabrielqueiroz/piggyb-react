@@ -1,25 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+ // src/App.js
+    
+    import React, {Component} from 'react';
+    import PiggyBanks from './components/piggyBanks';
+    class App extends Component {
+      state = {
+        piggyBanks: []
+      }
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+      componentDidMount() {
+        fetch('/piggy_banks', {
+          method: 'GET',
+          headers: { 
+            'Authorization': 'Basic ' + process.env.BASIC_AUTH,
+            'Accept': 'application/json',
+            "Access-Control-Allow-Origin": "*",
+          },
+        })
+        .then(res => res.json())
+        .then((data) => {
+          this.setState({ piggyBanks: data.piggy_banks })
+        })
+        .catch(console.log)
+      }
 
-export default App;
+      render() {
+        return (
+          <div class="container mt-4">
+            <PiggyBanks piggyBanks={this.state.piggyBanks} />
+          </div>
+        )
+      }
+    }
+    
+    export default App;
