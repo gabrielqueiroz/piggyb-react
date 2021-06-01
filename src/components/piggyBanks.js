@@ -4,8 +4,8 @@ import PiggyBank from './piggyBank';
 const PiggyBanks = ({ piggyBanks }) => {
   return (
     <div>
-      <center><h1>PiggyBank List</h1></center>
-      <div class="row">
+      <div><h2>PiggyBank List</h2></div>
+      <div class="row mt-4">
         { piggyBanks.map((piggyBank) => (
           <div class="col-6">
             <PiggyBank piggyBank={piggyBank} />
