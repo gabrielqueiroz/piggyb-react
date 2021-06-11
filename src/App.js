@@ -1,7 +1,8 @@
 import './App.css'
-import logo from './piggy_bank_white.png';
 import React, {Component} from 'react';
+import MenuToolbar from './components/menuToolbar';
 import PiggyBanks from './components/piggyBanks';
+import { Menu } from '@material-ui/core';
 class App extends Component {
   state = {
     piggyBanks: []
@@ -11,7 +12,7 @@ class App extends Component {
     fetch('/piggy_banks', {
       method: 'GET',
       headers: { 
-        'Authorization': 'Basic ' + process.env.BASIC_AUTH,
+        'Authorization': 'Basic Z2FicmllbC5xdWVpcm96QHNob3BpZnkuY29tOnBhc3N3b3Jk',
         'Accept': 'application/json',
         "Access-Control-Allow-Origin": "*",
       },
@@ -25,17 +26,12 @@ class App extends Component {
 
   render() {
     return (
-      <main>
-        <header class="p-3 bg-dark text-white">
-          <div class="container">
-            <img src={logo} className="App-logo me-2" alt="logo" />
-            <b>Piggy B - React</b>
-          </div>
-        </header>
-        <div class="container mt-4">
+      <div>
+        <MenuToolbar/>
+        <main class="mdc-top-app-bar--fixed-adjust center">
           <PiggyBanks piggyBanks={this.state.piggyBanks} />
-        </div>
-      </main>
+        </main>
+      </div>
     )
   }
 }

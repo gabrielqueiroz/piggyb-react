@@ -3,15 +3,16 @@ import PiggyBank from './piggyBank';
     
 const PiggyBanks = ({ piggyBanks }) => {
   return (
-    <div>
-      <div><h2>PiggyBank List</h2></div>
-      <div class="row mt-4">
-        { piggyBanks.map((piggyBank) => (
-          <div class="col-6">
-            <PiggyBank piggyBank={piggyBank} />
-          </div>
-        ))}
-      </div>
+    <div class="mdc-layout-grid">
+      <div class="mdc-layout-grid__inner">
+        { 
+          piggyBanks.map((piggyBank) => (
+            <div class="mdc-layout-grid__cell--span-6">
+              <PiggyBank piggyBank={piggyBank} />
+            </div>
+          ))
+        }
+      </div>  
     </div>
   )
 };

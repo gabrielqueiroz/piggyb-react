@@ -4,60 +4,31 @@ import UsageGraph from './usageGraph';
 
 const PiggyBank = ({ piggyBank }) => {
   return (    
-    <div class="card card_bank mb-4 animate__animated animate__fadeInUp">
-      <div class="card-body">
-        <div class="row">
-          <div class="col-xl-5">
-            <h5 class="card-title">{piggyBank.name}</h5>
-            <h6 class="card-subtitle mb-2 text-muted">{piggyBank.description}</h6>
-          </div>
-          <div class="col-xl-7">
-            <div class="row">
-              <div class="col-md-3 text-nowrap small">
-                {piggyBank.currency}
-              </div>
-              <div class="col-md-9 text-right">
-                <h1>$ {piggyBank.balance.toFixed(2)}</h1>
-              </div>
-            </div>
-
-            <div class="row text-muted">
-              <div class="col-md-6 small">
-              <div class="row">
-                <div class="col-md-12">
-                  <b>Total Credits</b>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-md-4 text-nowrap small">
-                  {piggyBank.currency}
-                </div>
-                <div class="col-md-8 text-right">
-                  $ {piggyBank.total_credit.toFixed(2)}
-                </div>
-              </div>
-            </div>
-
-            <div class="col-md-6 small">
-              <div class="row">
-                <div class="col-md-12">
-                  <b>Total Debits</b>
-                </div>
-              </div>
-                <div class="row">
-                  <div class="col-md-4 text-nowrap small">
-                    {piggyBank.currency}
-                  </div>
-                  <div class="col-md-8 text-right">
-                    $ {piggyBank.total_debit.toFixed(2)}
-                  </div>
-                </div>
-              </div>
-            </div>            
-          </div>
+    <div class="mdc-card mdc-card--outlined">
+      <div class="card-content">
+        <div class="mdc-card__title mdc-typography mdc-typography--headline6">{piggyBank.name}</div>
+        <div class="mdc-card__body1 mdc-typography mdc-typography--subtitle3">{piggyBank.description}</div>
+        <br/>
+        Total currency
+        <div class="text-right">
+          {piggyBank.currency}$ <span class="total-value">{piggyBank.balance.toFixed(2)}</span>
         </div>
-        <div class="row">
-          <UsageGraph piggyBank={piggyBank} />
+      </div>
+      <div class="mdc-list-divider"/>
+      <div class="mdc-layout-grid no-margin">
+        <div class="mdc-layout-grid__inner">
+          <div class="mdc-layout-grid__cell--span-6">
+            Total credits
+            <div class="text-right">
+              {piggyBank.currency}$ <span class="value">{piggyBank.total_credit.toFixed(2)}</span>
+            </div>
+          </div>
+          <div class="mdc-layout-grid__cell--span-6">
+            Total Debits
+            <div class="text-right">
+              {piggyBank.currency}$ <span class="value">{piggyBank.total_debit.toFixed(2)}</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
