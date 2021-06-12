@@ -29,9 +29,7 @@ class App extends Component {
       <div>
         <MenuToolbar/>
         <Container maxWidth="lg">
-          <main class="mdc-top-app-bar--fixed-adjust center">
-            <PiggyBanks piggyBanks={this.state.piggyBanks} />
-          </main>
+          <PiggyBanks piggyBanks={this.state.piggyBanks} />
         </Container>
       </div>
     )
