@@ -2,7 +2,7 @@ import './App.css'
 import React, {Component} from 'react';
 import MenuToolbar from './components/menuToolbar';
 import PiggyBanks from './components/piggyBanks';
-import { Menu } from '@material-ui/core';
+import Container from '@material-ui/core/Container';
 class App extends Component {
   state = {
     piggyBanks: []
@@ -28,9 +28,11 @@ class App extends Component {
     return (
       <div>
         <MenuToolbar/>
-        <main class="mdc-top-app-bar--fixed-adjust center">
-          <PiggyBanks piggyBanks={this.state.piggyBanks} />
-        </main>
+        <Container maxWidth="lg">
+          <main class="mdc-top-app-bar--fixed-adjust center">
+            <PiggyBanks piggyBanks={this.state.piggyBanks} />
+          </main>
+        </Container>
       </div>
     )
   }
